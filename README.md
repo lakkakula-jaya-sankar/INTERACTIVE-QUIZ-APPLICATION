@@ -30,6 +30,6 @@ To enhance the application's performance and maintainability, I also focused on 
 
 # OUTPUT
 
-![Image](https://github.com/user-attachments/assets/696a806a-322a-4359-97c7-f0ca7687e79a)
+![Image](https://github.com/user-attachments/assets/a3a56dc6-20b2-4ab7-a251-39e3e4b56c72)
 
-![Image](https://github.com/user-attachments/assets/d80a4c45-f7ef-44b1-8d68-7fc9d1a18026)
+![Image](https://github.com/user-attachments/assets/66adcaf9-9a04-420b-90f0-72f1a75c467a)
