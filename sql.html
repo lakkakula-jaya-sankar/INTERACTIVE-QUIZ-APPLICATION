@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Quiz</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body onload="next()">
+    <div class="box" id="My">
+        <p id="ques"></p>
+        <button id="one" onclick="check('one')"></button><br>
+        <button id="two" onclick="check('two')"></button><br>
+        <button id="three" onclick="check('three')"></button><br>
+        <button id="four" onclick="check('four')"></button><br>
+        <div id="res"></div>
+        <div id="res1"></div>
+        <button id="nex" onclick="next()">Next</button>
+    </div>
+
+    <script>
+        var ques = document.getElementById("ques");
+        var one = document.getElementById("one");
+        var two = document.getElementById("two");
+        var three = document.getElementById("three");
+        var four = document.getElementById("four");
+        var res = document.getElementById("res");
+        var res1 = document.getElementById("res1");
+
+        var a = 0, ca = 0;
+
+        var obj = [
+            {
+                question: "What does SQL stand for?",
+                answers: {
+                    one: "Strong Question Language",
+                    two: "Structured Query Language",
+                    three: "Structured Question Language",
+                    four: "None of the Above",
+                    tr: "Structured Query Language"
+                }
+            },
+            {
+                question: "Which SQL statement is used to extract data from a database?",
+                answers: {
+                    one: "get",
+                    two: "select",
+                    three: "open",
+                    four: "extract",
+                    tr: "select"
+                }
+            },
+            {
+                question: "Which SQL statement is used to update data in a database?",
+                answers: {
+                    one: "update",
+                    two: "save",
+                    three: "save as",
+                    four: "modify",
+                    tr: "update"
+                }
+            },
+            {
+                question: "Which SQL statement is used to delete data from a database?",
+                answers: {
+                    one: "delete",
+                    two: "collapse",
+                    three: "remove",
+                    four: "alter",
+                    tr: "delete"
+                }
+            },
+            {
+                question: "Which SQL statement is used to insert new data in a database?",
+                answers: {
+                    one: "add new",
+                    two: "add record",
+                    three: "insert into",
+                    four: "insert new",
+                    tr: "insert into"
+                }
+            }
+        ];
+
+        function next() {
+            if (a < obj.length) {
+                res.innerHTML = "";
+                res1.innerHTML = "";
+                ques.innerHTML = obj[a].question;
+                one.innerHTML = obj[a].answers.one;
+                two.innerHTML = obj[a].answers.two;
+                three.innerHTML = obj[a].answers.three;
+                four.innerHTML = obj[a].answers.four;
+
+                // Enable buttons for the next question
+                one.disabled = false;
+                two.disabled = false;
+                three.disabled = false;
+                four.disabled = false;
+            } else {
+                result();
+            }
+        }
+
+        function check(selected) {
+            let an = document.getElementById(selected).innerHTML;
+            if (an === obj[a].answers.tr) {
+                res.innerHTML = "✅ Correct!";
+                ca++;
+            } else {
+                res1.innerHTML = `❌ Wrong Answer! The correct answer is: <strong>${obj[a].answers.tr}</strong>`;
+            }
+
+            // Disable buttons after answering
+            one.disabled = true;
+            two.disabled = true;
+            three.disabled = true;
+            four.disabled = true;
+
+            a++; // Move to the next question
+        }
+
+        function result() {
+            let fi = document.getElementById("My");
+            fi.innerHTML = `<h2>You answered ${ca} out of ${obj.length} questions correctly!</h2>`;
+        }
+    </script>
+</body>
+</html>

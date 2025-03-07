@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body{
+                background-image: url(./assets/des.jpg);
+                color:black;
+            }
+            #st{
+                text-align: center;
+                font-size: 3rem;
+            }
+            .box{
+                background: linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0.1));
+                backdrop-filter: blur(15px);
+                margin:30px auto;
+                border: 2px solid lightgray;
+                border-radius: 20px;
+                width:500px;
+                padding:1.5%;
+            }
+            .box h3, h2{
+                text-align: center;
+            }
+            .inbox{
+                border: 2px solid black;
+                margin: 30px 15px;
+                border-radius: 150px;
+            }
+            a{
+                text-decoration: none;
+                color: black;
+            }
+            a:hover .inbox{
+                border:2px solid lightgreen;
+                color:green;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Welcome Section -->
+        <h2 id="st">Welcome to the Quiz app</h2>
+        <div class="box">
+            <h2>Select the topic you want</h2>
+            <a href="./java.html">
+                <div class="inbox"><h3>JAVA</h3></div>
+            </a>
+            <a href="./c.html">
+                <div class="inbox"><h3>C</h3></div>
+            </a>
+            <a href="./sql.html">
+                <div class="inbox"><h3>SQL</h3></div>
+            </a>
+            <a href="./ht.html">
+                <div class="inbox"><h3>HTML</h3></div>
+            </a>
+        </div>
+    </body>
+</html>
