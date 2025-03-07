@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body onload="next()">
+    <!-- Quiz Container -->
+    <div class="box" id="My">
+        <p id="ques"></p>
+        <button id="one" onclick="check('one')"></button><br>
+        <button id="two" onclick="check('two')"></button><br>
+        <button id="three" onclick="check('three')"></button><br>
+        <button id="four" onclick="check('four')"></button><br>
+        <div id="res"></div>
+        <div id="res1"></div>
+        <button id="nex" onclick="next()">Next</button>
+    </div>
+
+    <!-- Logic for Quiz -->
+    <script>
+        var ques = document.getElementById("ques");
+        var one = document.getElementById("one");
+        var two = document.getElementById("two");
+        var three = document.getElementById("three");
+        var four = document.getElementById("four");
+        var res = document.getElementById("res");
+        var res1 = document.getElementById("res1");
+
+        var a = 0, ca = 0;
+
+        var obj = [
+            {question: "C is an ?",
+            answers: { one: "Procedural Language", two: "Object Oriented Language", three: "Assembly Language", four: "None of Above", tr: "Procedural Language" }
+            },
+            {question: "Who invented C ?",
+            answers: { one: "James", two: "Micheal", three: "Dennis Ritchie", four: "John", tr: "Dennis Ritchie" }
+            },
+            {question: "Which one is not a Keyword",
+            answers: { one: "char", two: "int", three: "float", four: "boolean", tr: "boolean" }
+            },
+            {question: "Size of Double",
+            answers: { one: "8", two: "4", three: "2", four: "1", tr: "8" }
+            },
+            {question: "Who Developed C ?",
+            answers: { one: "Sun Microsystems", two: "Oracle", three: "PSF", four: "AT And T Laboratory", tr: "AT And T Laboratory" }
+            }
+        ];
+
+        function next() {
+            if (a < obj.length) {
+                res.innerHTML = "";
+                res1.innerHTML = "";
+                ques.innerHTML = obj[a].question;
+                one.innerHTML = obj[a].answers.one;
+                two.innerHTML = obj[a].answers.two;
+                three.innerHTML = obj[a].answers.three;
+                four.innerHTML = obj[a].answers.four;
+
+                // Enable buttons
+                one.disabled = false;
+                two.disabled = false;
+                three.disabled = false;
+                four.disabled = false;
+            } else {
+                result();
+            }
+        }
+
+        function check(selected) {
+            let an = document.getElementById(selected).innerHTML;
+            if (an == obj[a].answers.tr) {
+                res.innerHTML = "✅ Correct";
+                ca++;
+            } else {
+                res1.innerHTML = `❌ Wrong Answer! Correct answer is: <b>${obj[a].answers.tr}</b>`;
+            }
+
+            // Disable buttons after selecting an answer
+            one.disabled = true;
+            two.disabled = true;
+            three.disabled = true;
+            four.disabled = true;
+
+            a++; // Move to the next question
+        }
+
+        function result() {
+            let fi = document.getElementById("My");
+            fi.innerHTML = `<h2>You answered ${ca} out of ${obj.length} correctly!</h2>`;
+        }
+    </script>
+</body>
+</html>

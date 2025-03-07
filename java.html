@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Quiz</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body onload="next()">
+    <!-- Quiz box -->
+    <div class="box" id="My">
+        <p id="ques"></p>
+        <button id="one" onclick="check('one')"></button><br>
+        <button id="two" onclick="check('two')"></button><br>
+        <button id="three" onclick="check('three')"></button><br>
+        <button id="four" onclick="check('four')"></button><br>
+        <div id="res"></div>
+        <div id="res1"></div>
+        <button id="nex" onclick="next()">Next</button>
+    </div>
+
+    <!-- Script for the Quiz -->
+    <script>
+        var ques = document.getElementById("ques");
+        var one = document.getElementById("one");
+        var two = document.getElementById("two");
+        var three = document.getElementById("three");
+        var four = document.getElementById("four");
+        var res = document.getElementById("res");
+        var res1 = document.getElementById("res1");
+
+        var a = 0, ca = 0;
+
+        var obj = [
+            {question: "Java is an?",
+            answers: { one: "Procedural Language", two: "Object Oriented Language", three: "Assembly Language", four: "None of Above", tr: "Object Oriented Language" }
+            },
+            {question: "Who invented Java?",
+            answers: { one: "James", two: "Micheal", three: "Dennis Ritchie", four: "John", tr: "James" }
+            },
+            {question: "Which one is not a Keyword?",
+            answers: { one: "Integer", two: "int", three: "Float", four: "boolean", tr: "Integer" }
+            },
+            {question: "Size of Double?",
+            answers: { one: "8", two: "4", three: "2", four: "1", tr: "8" }
+            },
+            {question: "Now, Java is owned by whom?",
+            answers: { one: "Sun Microsystems", two: "Oracle", three: "PSF", four: "Microsoft", tr: "Oracle" }
+            }
+        ];
+
+        function next() {
+            if (a < obj.length) {
+                res.innerHTML = "";
+                res1.innerHTML = "";
+                ques.innerHTML = obj[a].question;
+                one.innerHTML = obj[a].answers.one;
+                two.innerHTML = obj[a].answers.two;
+                three.innerHTML = obj[a].answers.three;
+                four.innerHTML = obj[a].answers.four;
+
+                // Enable buttons for the next question
+                one.disabled = false;
+                two.disabled = false;
+                three.disabled = false;
+                four.disabled = false;
+            } else {
+                result();
+            }
+        }
+
+        function check(selected) {
+            let an = document.getElementById(selected).innerHTML;
+            if (an === obj[a].answers.tr) {
+                res.innerHTML = "✅ Correct!";
+                ca++;
+            } else {
+                res1.innerHTML = `❌ Wrong Answer! The correct answer is: <strong>${obj[a].answers.tr}</strong>`;
+            }
+
+            // Disable buttons after answering
+            one.disabled = true;
+            two.disabled = true;
+            three.disabled = true;
+            four.disabled = true;
+
+            a++; // Move to the next question
+        }
+
+        function result() {
+            let fi = document.getElementById("My");
+            fi.innerHTML = `<h2>You answered ${ca} out of ${obj.length} questions correctly!</h2>`;
+        }
+    </script>
+</body>
+</html>

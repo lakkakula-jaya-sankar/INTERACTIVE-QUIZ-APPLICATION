@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Quiz</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body onload="next()">
+    <!-- Quiz box -->
+    <div class="box" id="My">
+        <p id="ques"></p>
+        <button id="one" onclick="check('one')"></button><br>
+        <button id="two" onclick="check('two')"></button><br>
+        <button id="three" onclick="check('three')"></button><br>
+        <button id="four" onclick="check('four')"></button><br>
+        <div id="res"></div>
+        <div id="res1"></div>
+        <button id="nex" onclick="next()">Next</button>
+    </div>
+
+    <!-- Script for quiz -->
+    <script>
+        var ques = document.getElementById("ques");
+        var one = document.getElementById("one");
+        var two = document.getElementById("two");
+        var three = document.getElementById("three");
+        var four = document.getElementById("four");
+        var res = document.getElementById("res");
+        var res1 = document.getElementById("res1");
+
+        var a = 0, ca = 0;
+
+        var obj = [
+            {question: "What does HTML stand for?",
+            answers: { one: "Hyper Text Markup Language", two: "Home Tool Markup Language", three: "Hyperlinks Text Markup Language", four: "None of Above", tr: "Hyper Text Markup Language" }
+            },
+            {question: "Who is making the Web standards?",
+            answers: { one: "Microsoft", two: "Google", three: "Amazon", four: "W3C", tr: "W3C" }
+            },
+            {question: "Choose the correct HTML element for the largest heading:",
+            answers: { one: "h6", two: "img", three: "a", four: "h1", tr: "h1" }
+            },
+            {question: "What is the correct HTML element for inserting a line break?",
+            answers: { one: "br", two: "hr", three: "em", four: "u", tr: "br" }
+            },
+            {question: "Choose the correct HTML element to define important text",
+            answers: { one: "strong", two: "b", three: "important", four: "i", tr: "strong" }
+            }
+        ];
+
+        function next() {
+            if (a < obj.length) {
+                res.innerHTML = "";
+                res1.innerHTML = "";
+                ques.innerHTML = obj[a].question;
+                one.innerHTML = obj[a].answers.one;
+                two.innerHTML = obj[a].answers.two;
+                three.innerHTML = obj[a].answers.three;
+                four.innerHTML = obj[a].answers.four;
+
+                // Enable buttons
+                one.disabled = false;
+                two.disabled = false;
+                three.disabled = false;
+                four.disabled = false;
+            } else {
+                result();
+            }
+        }
+
+        function check(selected) {
+            let an = document.getElementById(selected).innerHTML;
+            if (an == obj[a].answers.tr) {
+                res.innerHTML = "✅ Correct!";
+                ca++;
+            } else {
+                res1.innerHTML = `❌ Wrong Answer! The correct answer is: <strong>${obj[a].answers.tr}</strong>`;
+            }
+
+            // Disable buttons after selection
+            one.disabled = true;
+            two.disabled = true;
+            three.disabled = true;
+            four.disabled = true;
+
+            a++; // Move to the next question
+        }
+
+        function result() {
+            let fi = document.getElementById("My");
+            fi.innerHTML = `<h2>You answered ${ca} out of ${obj.length} questions correctly!</h2>`;
+        }
+    </script>
+</body>
+</html>

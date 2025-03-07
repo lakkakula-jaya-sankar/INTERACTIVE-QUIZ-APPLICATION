@@ -1,0 +1,31 @@
+body{
+    background-image: url(./assets/des.jpg);
+}
+.box{
+    background: linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0.1));
+    backdrop-filter: blur(15px);
+    margin:50px auto;
+    border: 1px solid black;
+    border-radius: 20px;
+    width:500px;
+    padding:2%;
+}
+p{
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+button{
+    border:1px solid black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+    margin: 20px 0px;
+    padding:15px;
+    border-radius: 20px;
+}
+#res{
+    color:green;
+}
+#res1{
+    color: red;
+}
